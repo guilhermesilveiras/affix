@@ -12,7 +12,7 @@ export default function Home() {
           className="rounded-full"
         />
         <h1 className="text-xl font-bold text-gray-800">Affix</h1>
-        <div style={{ width: 48 }} /> {/* 22 */}
+        <div style={{ width: 48 }} /> {/* 21 */}
       </header>
     </div>
   );
