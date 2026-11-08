@@ -27,24 +27,6 @@ As seções ficam em uma única página, com filtros independentes e categorias 
 
 Os arquivos importados são lidos no navegador e não são enviados ao GitHub ou a outro servidor. O salvamento local vale para aquele navegador e endereço do site; limpar os dados do navegador remove essa cópia. Guarde o JSON exportado para recuperar o progresso. Os comprovantes originais das atividades devem ser guardados separadamente.
 
-## Publicar no GitHub Pages
-
-O [GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages) hospeda os arquivos estáticos. JavaScript executa a interface e os cálculos no navegador; Python é usado somente no desenvolvimento e no build.
-
-1. Envie as alterações para a branch `main` do [repositório Affix](https://github.com/guilhermesilveiras/affix).
-2. Em **Settings → Pages → Build and deployment**, selecione **GitHub Actions**.
-3. O workflow [pages.yml](./.github/workflows/pages.yml) executa os testes, gera e publica a pasta `dist`.
-4. Acesse [guilhermesilveiras.github.io/affix](https://guilhermesilveiras.github.io/affix/). Novos pushes na branch `main` executam os testes e atualizam o site automaticamente.
-
-Para gerar os arquivos manualmente:
-
-```powershell
-python scripts/build_static.py
-python -m http.server 8000 --bind 127.0.0.1 --directory dist
-```
-
-O build substitui somente a pasta gerada `dist` e copia os arquivos públicos da interface. Documentos de referência, ferramentas Python e arquivos de alunos não são publicados no site. O repositório remoto é [guilhermesilveiras/affix](https://github.com/guilhermesilveiras/affix).
-
 ## Desenvolvimento e validação offline
 
 Python 3.12 ou superior e Node 22 para os testes JavaScript:
