@@ -21,7 +21,7 @@ jobs:
           node-version: '22'
       - run: python -m pip install -r requirements-dev.txt
       - run: python -m pytest -q
-      - run: node --test tests/progress.test.js
+      - run: node --test tests/*.test.js
       - run: python scripts/build_static.py
       - uses: actions/upload-pages-artifact@v3
         with:

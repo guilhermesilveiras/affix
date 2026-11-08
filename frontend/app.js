@@ -1,4 +1,5 @@
 import {STATUSES, emptyProgress, clearProgress, validateProgress, evaluate, activeCourses, rawActivityHours, updateCourseStatus} from './progress.js';
+import {matchTranscript, mergeTranscript} from './sigaa.js';
 
 const $ = s=>document.querySelector(s);
 const icons={
@@ -41,6 +42,7 @@ const labels={overview:'Visão geral',curriculum:'Matriz curricular',electives:'
 const STORE='affix-progress-v1';
 let catalog,progress,groupBy='category',query='',categoryFilter='',statusFilter='',electiveQuery='',electiveStatus='',toastTimer,storageAvailable=true;
 let courseOrigin='curriculum';
+let transcriptPreview=null,transcriptRequest=0;
 const expandedGroups=new Map(),filteredExpandedGroups=new Map();
 let electiveCatalogExpanded=false;
 const hasCourseFilters=()=>Boolean(query||categoryFilter||statusFilter);
@@ -61,6 +63,7 @@ syncTheme();
 
 function heading(eyebrow,title,subtitle,actions='',level='h2'){return `<div class="page-heading"><div>${eyebrow?`<div class="eyebrow">${eyebrow}</div>`:''}<${level}>${title}</${level}>${subtitle?`<p>${subtitle}</p>`:''}</div><div class="heading-actions">${actions}</div></div>`;}
 const exportButton=()=>`<button class="button" data-action="export">${icon('download')}Exportar progresso</button>`;
+const transcriptButton=()=>`<button class="button primary" data-action="import-transcript" title="Importar histórico SIGAA" aria-label="Importar histórico SIGAA">${icon('upload')}Importar histórico SIGAA</button>`;
 const addActivityButton=()=>`<button class="button primary" data-action="add-activity">${icon('plus')}Adicionar atividade</button>`;
 function stat(label,value,target,foot,ic,color){return `<article class="stat"><div class="stat-top"><span>${label}</span><span class="stat-icon">${icon(ic)}</span></div><div class="stat-value">${num(value)} <small>/ ${num(target)} h</small></div><div class="progress-track" style="--progress:${Math.min(100,value/target*100)}%;--bar:${color}"><span></span></div><div class="stat-foot"><span>${foot}</span><span>${num(Math.min(100,value/target*100))}%</span></div></article>`;}
 function stats(s){return `<div class="stats">${stat('Disciplinas obrigatórias',s.required,2370,'Inclui projetos e TCC','book','var(--purple)')}${stat('Disciplinas optativas',s.elective,480,'8 disciplinas de 60 horas','layers','#c7ad60')}${stat('Horas complementares',s.activity,240,'Ensino, pesquisa e extensão','clock','var(--green)')}</div>`;}
@@ -144,7 +147,7 @@ function render({refreshSettings=false}={}){
    <section class="page-section" id="settings" aria-label="Meus dados e backup"></section>`;
   renderSettings();
  }
- $('#overview').innerHTML=heading('','Ferramenta para acompanhar o progresso de alunos de BSI - UFRPE','Marque disciplinas concluídas, registre atividades e acompanhe a carga horária.',`${exportButton()}<button class="button" data-action="print">${icon('print')}Imprimir resumo</button><button class="button danger" data-action="reset" title="Zerar progresso" aria-label="Zerar progresso">${icon('trash')}Zerar progresso</button>`,'h1')+hero(s)+stats(s);
+ $('#overview').innerHTML=heading('','Ferramenta para acompanhar o progresso de alunos de BSI - UFRPE','Marque disciplinas concluídas, registre atividades e acompanhe a carga horária.',`${transcriptButton()}${exportButton()}<button class="button" data-action="print">${icon('print')}Imprimir resumo</button><button class="button danger" data-action="reset" title="Zerar progresso" aria-label="Zerar progresso">${icon('trash')}Zerar progresso</button>`,'h1')+hero(s)+stats(s);
  $('#elective-summary').innerHTML=`<div class="wide-card"><div class="section-heading"><div><h3>Carga horária de optativas</h3><p>São exigidas 480 horas em optativas. Restam ${num(Math.max(0,480-s.elective))} horas.</p></div><span class="session-pill">${num(s.elective_raw)} / 480 h concluídas</span></div><div class="progress-track" style="--progress:${s.elective/480*100}%;--bar:#c8a84e"><span></span></div></div>`;
  renderCourses();
  renderElectives();
@@ -166,9 +169,10 @@ function renderActivities(s){
 function renderSettings(){
  $('#settings').innerHTML=heading('','Meus dados e backup','Configure o perfil e importe ou exporte o progresso.')
  +`<div class="settings-grid"><section class="wide-card"><h2>Seu perfil</h2><p>Nome para identificação do backup.</p><form id="profile-form"><label class="field">Nome<input name="name" maxlength="80" value="${esc(progress.name)}" placeholder="Seu nome" autocomplete="given-name"></label><button class="button primary" type="submit">Salvar perfil</button></form></section><section class="wide-card"><h2>Arquivo de progresso (JSON)</h2><p>Importe um arquivo JSON para recuperar o progresso. As alterações ficam neste navegador; exporte um novo JSON para guardá-las ou continuar em outro dispositivo. O arquivo original não é modificado automaticamente.</p><div class="inline-actions">${exportButton()}<button class="button" data-action="import">${icon('upload')}Importar JSON</button></div><p style="margin-top:22px;margin-bottom:0">O arquivo contém suas disciplinas, escolhas de projeto e registros de atividades. Os dados importados são lidos no navegador, sem envio a um servidor. Guarde os comprovantes originais separadamente.</p><button class="button danger" style="margin-top:20px" data-action="reset">${icon('trash')}Limpar progresso local</button></section></div>`;
+ $('#settings .settings-grid').insertAdjacentHTML('afterbegin',`<section class="wide-card full-width"><h2>Histórico escolar do SIGAA</h2><p>Carregue o PDF original baixado do SIGAA da UFRPE para reconhecer disciplinas aprovadas e em andamento. Confira o resultado antes de importar. Reprovações e trancamentos não somam horas.</p><div class="inline-actions">${transcriptButton()}</div><p style="margin-top:16px;margin-bottom:0">O PDF é lido neste navegador, sem envio a um servidor. Seu nome e suas atividades complementares já cadastradas são preservados.</p></section>`);
 }
 
-function openModal(content){$('#modal-content').innerHTML=content;if(!modal.open)modal.showModal();}
+function openModal(content){modal.classList.remove('transcript-modal');$('#modal-content').innerHTML=content;if(!modal.open)modal.showModal();}
 function modalHead(title,eyebrow=''){return `<div class="modal-head"><div>${eyebrow?`<div class="eyebrow">${eyebrow}</div>`:''}<h2 id="modal-title">${title}</h2></div><button class="icon-button" data-action="close-modal" aria-label="Fechar">${icon('close')}</button></div>`;}
 function courseModal(id){
  const c=catalog.courses.find(c=>c.id===id),cat=catalog.categories.find(cat=>cat.id===c.category),st=status(c);
@@ -195,6 +199,49 @@ function activityRuleFields(a=null){
 
 function exportProgress(){const blob=new Blob([JSON.stringify(progress,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`affix-bsi-${new Date().toISOString().slice(0,10)}.json`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),5000);toast('Backup exportado. Guarde o arquivo com você.');}
 function confirmReplace(title,description,callback,confirmLabel='Confirmar'){openModal(`${modalHead(title)}<div class="modal-body"><p>${description}</p><button class="button text" data-action="export">${icon('download')}Exportar dados atuais antes</button></div><div class="modal-footer"><button class="button" data-action="close-modal">Cancelar</button><button id="confirm-replace" class="button ${confirmLabel==='Zerar progresso'?'danger':'primary'}">${confirmLabel}</button></div>`);$('#confirm-replace').onclick=()=>{callback();modal.close();};}
+
+function reviewTranscript(report){
+ transcriptPreview=report;
+ const options=selected=>`<option value="">Não importar / selecionar disciplina</option>${catalog.categories.map(category=>`<optgroup label="${esc(category.name)}">${catalog.courses.filter(course=>course.category===category.id).map(course=>`<option value="${course.id}" ${selected===course.id?'selected':''}>${esc(course.name)}</option>`).join('')}</optgroup>`).join('')}`;
+ openModal(`${modalHead('Revisar histórico SIGAA')}<form id="transcript-form"><div class="modal-body"><p>${report.rows.length} registros lidos. Confira as correspondências. Aprovações anteriores, seu nome e suas atividades cadastradas serão mantidos. Nenhuma alteração é aplicada antes de confirmar.</p><div id="transcript-summary" class="rule-notice" role="status" aria-live="polite"></div><div id="transcript-notices"></div><div class="transcript-table-wrap"><table class="transcript-table"><caption>Disciplinas encontradas no histórico</caption><thead><tr><th scope="col">Importar</th><th scope="col">No histórico</th><th scope="col">No Affix</th></tr></thead><tbody>${report.rows.map(row=>`<tr><td><input type="checkbox" data-transcript-check="${row.index}" aria-label="Importar ${esc(row.name)}" ${row.selected?'checked':''} ${!['completed','in_progress'].includes(row.status)?'disabled':''}></td><td><strong>${esc(row.name)}</strong><small>${esc(row.code)} · ${esc(row.period)} · ${row.hours} h<br>${esc(row.result)} · ${row.status==='pending'?'Sem aprovação':esc(STATUSES[row.status]||'Situação desconhecida')}</small></td><td><select data-transcript-course="${row.index}" aria-label="Correspondência para ${esc(row.name)}" ${!['completed','in_progress'].includes(row.status)?'disabled':''}>${options(row.courseId)}</select><small id="transcript-reason-${row.index}">${esc(row.reason)}${row.suggestions.length?' Há equivalências possíveis; confira o aproveitamento antes de selecionar.':''}</small></td></tr>`).join('')}</tbody></table></div><p class="transcript-help">Linhas sem correspondência ou com situação desconhecida ficam fora da importação. Componentes da matriz anterior exigem conferência do aproveitamento. As horas complementares devem ser registradas na seção de atividades.</p><div id="transcript-error" class="form-error" role="alert"></div></div><div class="modal-footer"><button type="button" class="button" data-action="export">${icon('download')}Exportar dados atuais</button><button type="button" class="button" data-action="close-modal">Cancelar</button><button type="submit" id="apply-transcript" class="button primary">Aplicar ao progresso</button></div></form>`);
+ modal.classList.add('transcript-modal');
+ updateTranscriptPreview();
+}
+
+function updateTranscriptPreview(){
+ if(!transcriptPreview)return;
+ const {rows,totals,warnings}=transcriptPreview;
+ let notices=[...warnings];
+ const omitted=rows.filter(row=>!row.selected&&row.status!=='pending');
+ if(omitted.length)notices.push(`${omitted.length} registro(s) aprovado(s), em andamento ou com situação desconhecida não serão importados. Confira as linhas desmarcadas.`);
+ if(totals?.activity)notices.push(`O SIGAA informa ${num(totals.activity)} h complementares. Esta importação lê disciplinas; confira as atividades cadastradas para registrar essas horas.`);
+ try{
+  const merged=mergeTranscript(catalog,progress,rows),result=evaluate(catalog,merged.progress);
+  const imported=evaluate(catalog,mergeTranscript(catalog,emptyProgress(),rows).progress);
+  $('#transcript-summary').textContent=`${merged.selected} disciplinas selecionadas. Progresso após importar: ${num(result.total)} / 3.090 h (${num(result.percent)}%). ${result.completed} concluídas e ${result.in_progress} cursando.`;
+  if(totals){
+   notices.push(`Disciplinas integralizadas no SIGAA: ${num(totals.required)} h obrigatórias e ${num(totals.elective)} h optativas. Disciplinas selecionadas: ${num(imported.required)} h obrigatórias e ${num(imported.elective)} h optativas.`);
+   if(totals.required!==imported.required||Math.min(totals.elective,catalog.elective_hours)!==imported.elective)notices.push('As horas selecionadas diferem do resumo do SIGAA. Confira as correspondências e os registros não importados.');
+  }
+  if(merged.replaced.length)notices.push(`A escolha de projeto do histórico substituirá: ${merged.replaced.join('; ')}. As alternativas serão definidas como Não iniciadas.`);
+  $('#transcript-error').textContent='';
+  $('#apply-transcript').disabled=!merged.selected;
+ }catch(error){$('#transcript-summary').textContent='Revise as disciplinas selecionadas antes de aplicar.';$('#transcript-error').textContent=error.message;$('#apply-transcript').disabled=true;}
+ $('#transcript-notices').innerHTML=notices.length?`<ul class="transcript-notices">${notices.map(notice=>`<li>${esc(notice)}</li>`).join('')}</ul>`:'';
+}
+
+$('#transcript-file').addEventListener('change',async e=>{
+ const file=e.target.files[0];e.target.value='';if(!file)return;
+ const request=++transcriptRequest;
+ openModal(`${modalHead('Ler histórico SIGAA')}<div class="modal-body"><p id="transcript-reading" role="status">Lendo o PDF neste navegador…</p></div><div class="modal-footer"><button class="button" data-action="close-modal">Cancelar</button></div>`);
+ try{
+  const {readTranscriptPDF}=await import('./pdf-import.js');
+  const parsed=await readTranscriptPDF(file,(page,total)=>{if(request===transcriptRequest&&$('#transcript-reading'))$('#transcript-reading').textContent=`Lendo página ${page} de ${total}…`;});
+  if(request!==transcriptRequest||!modal.open)return;
+  reviewTranscript(matchTranscript(parsed,catalog));
+ }catch(error){if(request!==transcriptRequest||!modal.open)return;openModal(`${modalHead('Não foi possível importar')}<div class="modal-body"><p role="alert">${esc(error.message)}</p><p>O progresso atual foi preservado.</p></div><div class="modal-footer"><button class="button" data-action="close-modal">Fechar</button></div>`);}
+});
+modal.addEventListener('close',()=>{if(modal.open)return;transcriptRequest++;transcriptPreview=null;modal.classList.remove('transcript-modal');});
 $('#import-file').addEventListener('change',async e=>{
  const file=e.target.files[0];e.target.value='';if(!file)return;
  try{if(file.size>1_000_000)throw Error('O arquivo deve ter no máximo 1 MB.');const imported=JSON.parse(await file.text());const next=validateProgress(imported,catalog);const s=evaluate(catalog,next);confirmReplace('Importar este backup?',`O backup contém ${s.completed} disciplinas concluídas e ${next.activities.length} atividades. Ele substituirá o progresso local atual.${imported.schema_version===1?' As escolhas do formato antigo serão adaptadas para uma opção por período.':''}`,()=>{progress=next;persist();render({refreshSettings:true});toast('Progresso importado.');});}catch(error){toast(error instanceof SyntaxError?'O arquivo não contém um backup JSON válido.':error.message);}
@@ -212,6 +259,7 @@ document.addEventListener('click',e=>{
  if(action==='export')exportProgress();
  else if(action==='theme')$('#theme-toggle').click();
  else if(action==='import')$('#import-file').click();
+ else if(action==='import-transcript')$('#transcript-file').click();
  else if(action==='print')window.print();
  else if(action==='add-activity')activityModal();
  else if(action==='close-modal')modal.close();
@@ -226,6 +274,8 @@ document.addEventListener('click',e=>{
 });
 document.addEventListener('input',e=>{if(e.target.id==='course-search'){query=e.target.value;filteredExpandedGroups.clear();renderCourses();}if(e.target.id==='elective-search'){electiveQuery=e.target.value;renderElectives(true);}});
 document.addEventListener('change',e=>{
+ if(e.target.matches('[data-transcript-check]')){transcriptPreview.rows[Number(e.target.dataset.transcriptCheck)].selected=e.target.checked;updateTranscriptPreview();}
+ if(e.target.matches('[data-transcript-course]')){const row=transcriptPreview.rows[Number(e.target.dataset.transcriptCourse)];row.courseId=e.target.value;row.selected=Boolean(row.courseId);row.reason='';$('#transcript-reason-'+row.index).textContent='';$(`[data-transcript-check="${row.index}"]`).checked=row.selected;updateTranscriptPreview();}
  if(e.target.id==='category-filter'){categoryFilter=e.target.value;filteredExpandedGroups.clear();renderCourses();}
  if(e.target.id==='status-filter'){statusFilter=e.target.value;filteredExpandedGroups.clear();renderCourses();}
  if(e.target.id==='elective-status-filter'){electiveStatus=e.target.value;renderElectives(true);}
@@ -234,6 +284,10 @@ document.addEventListener('change',e=>{
 });
 document.addEventListener('submit',e=>{
  const f=e.target;e.preventDefault();
+ if(f.id==='transcript-form'){
+  try{const merged=mergeTranscript(catalog,progress,transcriptPreview.rows);if(!merged.selected)return;progress=merged.progress;persist();modal.close();render({refreshSettings:true});toast('Histórico importado. Progresso atualizado.');}
+  catch(error){$('#transcript-error').textContent=error.message;}
+ }
  if(f.id==='course-form'){progress=updateCourseStatus(catalog,progress,f.dataset.id,f.elements.status.value);persist();modal.close();render();$('#'+courseOrigin+' [data-course="'+f.dataset.id+'"]')?.focus({preventScroll:true});toast('Situação da disciplina atualizada.');}
  if(f.id==='activity-form'){
   try{

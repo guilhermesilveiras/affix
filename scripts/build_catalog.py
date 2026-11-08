@@ -93,7 +93,8 @@ for n, row in enumerate(ws.values, 1):
     elif n==17: mode,rate,unit = 'event',0,'eventos'
     rules.append(dict(id=f'activity-{n}', group=group, name=title, description=' '.join(str(c or '').split()), maximum=maximum, cap_group='special-topics' if n in [5,6] else f'activity-{n}', mode=mode, rate=rate, unit=unit, scoring=d, evidence=e.strip(), source_row=n))
 wb.close()
-catalog = dict(version=1, course='Bacharelado em Sistemas de Informação', institution='Universidade Federal Rural de Pernambuco', campus='Recife', total_hours=3090, required_hours=2370, elective_hours=480, activity_hours=240, periods=9, categories=[dict(id=k,name=n,color=c) for k,n,c in categories], courses=courses, activity_rules=rules, sources=[dict(name=p.name, url='sources/'+p.name) for p in sorted((ROOT/'source').iterdir())], notes=[
+public_sources = [pdf, ROOT/'source'/'Tabela.AtividadesComplementares.xlsx', ROOT/'source'/'matriz-curricular-com-equivalencias.pdf']
+catalog = dict(version=1, course='Bacharelado em Sistemas de Informação', institution='Universidade Federal Rural de Pernambuco', campus='Recife', total_hours=3090, required_hours=2370, elective_hours=480, activity_hours=240, periods=9, categories=[dict(id=k,name=n,color=c) for k,n,c in categories], courses=courses, activity_rules=rules, sources=[dict(name=p.name, url='sources/'+p.name) for p in sorted(public_sources)], notes=[
     'Matriz transcrita visualmente do PDF fornecido. Os identificadores das obrigatórias são internos; códigos SIGAA não constam na matriz.',
     'Pré-requisitos são referências às setas da matriz, não uma validação oficial de matrícula. Equivalências devem ser confirmadas pela coordenação.',
     'No 7º e no 8º período, os dois projetos são alternativas: somente uma opção por período pode ser planejada, cursada ou concluída. Cada escolha corresponde a 60h.',

@@ -43,6 +43,9 @@ def test_static_site_under_repository_prefix(tmp_path):
         for path in parser.paths:
             with urlopen(urljoin(base,path)) as asset:
                 assert asset.status==200
+        for path in ['sigaa.js','pdf-import.js','vendor/pdfjs/pdf.min.mjs','vendor/pdfjs/pdf.worker.min.mjs','vendor/pdfjs/LICENSE']:
+            with urlopen(urljoin(base,path)) as asset:
+                assert asset.status==200
         with urlopen(urljoin(base,'./data/catalog.json')) as response:
             catalog=json.load(response)
         assert catalog['total_hours']==3090

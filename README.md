@@ -16,6 +16,12 @@ Abra **http://127.0.0.1:8000**. Esse comando apenas serve os arquivos estáticos
 
 ## Progresso e arquivos JSON
 
+Em **Importar histórico SIGAA**, selecione o PDF original do histórico escolar da UFRPE, com texto selecionável. O Affix reconhece aprovações e aproveitamentos como disciplinas concluídas e matrículas em andamento como Cursando. Reprovações, cancelamentos e trancamentos não somam horas. A tela de revisão permite desmarcar registros e ajustar correspondências antes de aplicar o progresso.
+
+A importação compara códigos de optativas e nomes de disciplinas com o catálogo, incluindo diferenças de grafia da matriz. Componentes não reconhecidos e equivalências da matriz anterior exigem conferência manual. Divergências de carga horária e conflitos entre projetos são indicados. O resumo de horas do SIGAA é apresentado para comparação quando disponível.
+
+O PDF é processado inteiramente no navegador com [PDF.js](https://github.com/mozilla/pdf.js), incluído no próprio site. O documento, os dados pessoais e as notas não são enviados a um servidor nem armazenados no progresso. Importações repetidas não duplicam disciplinas. Nome, aprovações anteriores e atividades já cadastradas são preservados; a substituição de uma alternativa de projeto é indicada antes de confirmar. O total de horas complementares do histórico é apresentado para conferência, mas as atividades devem ser registradas separadamente. PDFs protegidos por senha ou digitalizados como imagem não são aceitos. Limites: 10 MB e 50 páginas.
+
 1. Em **Meus dados e backup → Importar JSON**, selecione um arquivo de progresso. O conteúdo é validado, e a substituição dos dados locais pede confirmação.
 2. Marque as disciplinas como Não iniciada, Planejada, Cursando ou Concluída. Apenas Concluída soma horas. É possível começar do zero sem importar um arquivo.
 3. No 7º período, escolha Projeto para Sociedade I ou Projeto de Soluções Complexas I. No 8º, escolha Projeto para Sociedade II ou Projeto de Soluções Complexas II. Ao selecionar uma opção, a alternativa do mesmo período volta para Não iniciada. Cada período soma no máximo 60h de projeto.
@@ -35,7 +41,7 @@ Python 3.12 ou superior e Node 22 para os testes JavaScript:
 python -m venv .venv
 ./.venv/Scripts/python -m pip install -r requirements-dev.txt
 ./.venv/Scripts/python -m pytest -q
-node --test tests/progress.test.js
+node --test tests/*.test.js
 python scripts/build_static.py
 ```
 
@@ -82,5 +88,9 @@ Para regenerar o catálogo após revisar as fontes:
 - [scripts](./scripts/): extração das fontes, geração do catálogo e build estático.
 - [tests](./tests/): regras de negócio, arquivos JSON e equivalência entre Python e JavaScript.
 - [source](./source/): documentos originais, exclusivos do desenvolvimento.
+
+Históricos pessoais usados em testes locais são ignorados pelo Git e não devem ser adicionados ao repositório. A geração do catálogo usa uma lista explícita dos três documentos curriculares públicos.
+
+PDF.js 6.5.438 está em [frontend/vendor/pdfjs](./frontend/vendor/pdfjs/), sob licença [Apache-2.0](./frontend/vendor/pdfjs/LICENSE). O leitor e o worker são carregados somente ao importar um PDF.
 
 A referência yggdrasil2 foi usada como inspiração funcional. A implementação e a interface foram criadas para este projeto, sem copiar seus ícones ou código.

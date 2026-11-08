@@ -6,6 +6,6 @@
   "scripts": {
     "dev": "python -m http.server 8000 --bind 127.0.0.1 --directory frontend",
     "build": "python scripts/build_static.py",
-    "test": "node --test tests/progress.test.js"
+    "test": "node --test tests/*.test.js"
   }
 }
