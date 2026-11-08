@@ -1,0 +1,92 @@
+.course-group > summary.group-head {
+  display: block;
+  cursor: pointer;
+  list-style: none;
+}
+
+.course-group > summary::-webkit-details-marker {
+  display: none;
+}
+
+.course-group:not([open]) > summary.group-head {
+  border-bottom: 0;
+}
+
+.course-group > summary.group-head:hover {
+  background: var(--surface-alt);
+}
+
+.course-group > summary .group-title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -.1px;
+}
+
+.group-name {
+  min-width: 0;
+}
+
+.group-chevron {
+  display: inline-flex;
+  color: var(--muted);
+}
+
+.group-chevron svg {
+  width: 14px;
+  height: 14px;
+  transition: transform .15s;
+}
+
+.course-group[open] > summary .group-chevron svg {
+  transform: rotate(90deg);
+}
+
+.course-group > summary .progress-track {
+  display: block;
+}
+
+.group-summary-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.group-summary-meta strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+#elective-catalog-group .elective-catalog {
+  padding: 12px;
+}
+
+.project-choice {
+  margin: 8px 0;
+  padding: 10px 5px 4px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+}
+
+.project-choice h4 {
+  margin: 0 7px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.project-choice > p {
+  margin: 4px 7px 6px;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+@media (max-width: 570px) {
+  .course-group > summary .group-title { font-size: 13px; }
+  .group-summary-meta { font-size: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .group-chevron svg { transition: none; }
+}

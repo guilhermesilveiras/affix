@@ -1,0 +1,1686 @@
+{
+  "version": 1,
+  "course": "Bacharelado em Sistemas de Informação",
+  "institution": "Universidade Federal Rural de Pernambuco",
+  "campus": "Recife",
+  "total_hours": 3090,
+  "required_hours": 2370,
+  "elective_hours": 480,
+  "activity_hours": 240,
+  "periods": 9,
+  "categories": [
+    {
+      "id": "basica",
+      "name": "Formação básica",
+      "color": "#e7836b"
+    },
+    {
+      "id": "tecnologica",
+      "name": "Formação tecnológica",
+      "color": "#5daa88"
+    },
+    {
+      "id": "complementar",
+      "name": "Formação complementar",
+      "color": "#6d9dcc"
+    },
+    {
+      "id": "humanistica",
+      "name": "Formação humanística",
+      "color": "#a38acc"
+    },
+    {
+      "id": "suplementar",
+      "name": "Formação suplementar",
+      "color": "#b47bc8"
+    },
+    {
+      "id": "optativa",
+      "name": "Optativas",
+      "color": "#c8a84e"
+    }
+  ],
+  "courses": [
+    {
+      "id": "core-01",
+      "name": "Projeto Interdisciplinar de Sistemas de Informação I",
+      "category": "suplementar",
+      "hours": 60,
+      "period": 1,
+      "kind": "required",
+      "equivalents": [
+        "Introdução à Programação",
+        "Laboratório de Informática"
+      ],
+      "prerequisites": [],
+      "track": null,
+      "code": null
+    },
+    {
+      "id": "core-02",
+      "name": "Fundamentos Matemáticos para Sistemas de Informação I",
+      "category": "basica",
+      "hours": 60,
+      "period": 1,
+      "kind": "required",
+      "equivalents": [
+        "Matemática Discreta"
+      ],
+      "prerequisites": [],
+      "track": null,
+      "code": null
+    },
+    {
+      "id": "core-03",
+      "name": "Princípios de Programação",
+      "category": "basica",
+      "hours": 60,
+      "period": 1,
+      "kind": "required",
+      "equivalents": [
+        "Introdução à Programação"
+      ],
+      "prerequisites": [],
+      "track": null,
+      "code": null
+    },
+    {
+      "id": "core-04",
+      "name": "Sustentabilidade em Sistemas de Informação",
+      "category": "humanistica",
+      "hours": 60,
+      "period": 1,
+      "kind": "required",
+      "equivalents": [
+        "Aspectos Filosóficos e Sociológicos da Informação"
+      ],
+      "prerequisites": [],
+      "track": null,
+      "code": null
+    },
+    {
+      "id": "core-05",
+      "name": "Introdução à Administração",
+      "category": "complementar",
+      "hours": 60,
+      "period": 1,
+      "kind": "required",
+      "equivalents": [
+        "Teoria Geral da Administração"
+      ],
+      "prerequisites": [],
+      "track": null,
+      "code": null
+    },
+    {
+      "id": "core-06",
+      "name": "Projeto Interdisciplinar de Sistemas de Informação II",
+      "category": "suplementar",
+      "hours": 60,
+      "period": 2,
+      "kind": "required",
+      "equivalents": [
+        "Metodologia da Expressão Técnica e Científica"
+      ],
+      "prerequisites": [],
+      "track": null,
+      "code": null
+    },
+    {
+      "id": "core-07",
+      "name": "Fundamentos Matemáticos para Sistemas de Informação II",
+      "category": "basica",
+      "hours": 60,
+      "period": 2,
+      "kind": "required",
+      "equivalents": [
+        "Álgebra Linear e Vetorial para Computação"
+      ],
+      "prerequisites": [
+        "core-02"
+      ],
+      "track": null,
+      "code": null
+    },
+    {
+      "id": "core-08",
+      "name": "Fundamentos de Problemas Computacionais I",
+      "category": "basica",
+      "hours": 60,
+      "period": 2,
+      "kind": "required",
+      "equivalents": [
+        "Laboratório de Programação"
+      ],
+      "prerequisites": [
+        "core-03"
+      ],
+      "track": null,
+      "code": null
+    },
+    {
+      "id": "core-09",
+      "name": "Elementos de Sistemas Computacionais",
+      "category": "basica",
+      "hours": 60,
+      "period": 2,
+      "kind": "required",
+      "equivalents": [
+        "Infraestrutura de Hardware"
+      ],
+      "prerequisites": [],
+      "track": null,
+      "code": null
+    },
+    {
+      "id": "core-10",
+      "name": "Fundamentos de Sistemas de Informação",
+      "category": "complementar",
+      "hours": 60,
+      "period": 2,
+      "kind": "required",
+      "equivalents": [],
+      "prerequisites": [],
+      "track": null,
+      "code": null
+    },
+    {
+      "id": "core-11",
+      "name": "Projeto Interdisciplinar de Sistemas de Informação III",
+      "category": "suplementar",
+      "hours": 60,
+      "period": 3,
+      "kind": "required",
+      "equivalents": [
+        "Análise e Projeto de Sistemas de Informação"
+      ],
+      "prerequisites": [],
+      "track": null,
+      "code": null
+    },
+    {
+      "id": "core-12",
+      "name": "Desenvolvimento de Sistemas de Informação",
+      "category": "tecnologica",
+      "hours": 60,
+      "period": 3,
+      "kind": "required",
+      "equivalents": [
+        "Modelagem e Programação Orientada a Objetos"
+      ],
+      "prerequisites": [
+        "core-08"
+      ],
+      "track": null,
+      "code": null
+    },
+    {
+      "id": "core-13",
+      "name": "Engenharia para Sistemas de Informação I",
+      "category": "tecnologica",
+      "hours": 60,
+      "period": 3,
+      "kind": "required",
+      "equivalents": [
+        "Fundamentos para Engenharia de Software"
+      ],
+      "prerequisites": [],
+      "track": null,
+      "code": null
+    },
+    {
+      "id": "core-14",
+      "name": "Introdução ao Armazenamento e Análise de Dados",
+      "category": "tecnologica",
+      "hours": 60,
+      "period": 3,
+      "kind": "required",
+      "equivalents": [
+        "Fundamentos de Banco de Dados"
+      ],
+      "prerequisites": [],
+      "track": null,
+      "code": null
+    },
+    {
+      "id": "core-15",
+      "name": "Projeto Interdisciplinar de Sistemas de Informação IV",
+      "category": "suplementar",
+      "hours": 60,
+      "period": 4,
+      "kind": "required",
+      "equivalents": [
+        "Projeto de Sistemas Distribuídos"
+      ],
+      "prerequisites": [],
+      "track": null,
+      "code": null
+    },
+    {
+      "id": "core-16",
+      "name": "Princípios de Software Básico",
+      "category": "tecnologica",
+      "hours": 60,
+      "period": 4,
+      "kind": "required",
+      "equivalents": [
+        "Infraestrutura de Software"
+      ],
+      "prerequisites": [
+        "core-09"
+      ],
+      "track": null,
+      "code": null
+    },
+    {
+      "id": "core-17",
+      "name": "Fundamentos de Problemas Computacionais II",
+      "category": "basica",
+      "hours": 60,
+      "period": 4,
+      "kind": "required",
+      "equivalents": [
+        "Algoritmos para Sistemas"
+      ],
+      "prerequisites": [
+        "core-08"
+      ],
+      "track": null,
+      "code": null
+    },
+    {
+      "id": "core-18",
+      "name": "Sistemas de Informação na Internet",
+      "category": "tecnologica",
+      "hours": 60,
+      "period": 4,
+      "kind": "required",
+      "equivalents": [
+        "Redes e Sistemas de Internet"
+      ],
+      "prerequisites": [],
+      "track": null,
+      "code": null
+    },
+    {
+      "id": "core-19",
+      "name": "Projeto de Desenvolvimento Tecnológico para o Mundo I",
+      "category": "suplementar",
+      "hours": 60,
+      "period": 5,
+      "kind": "required",
+      "equivalents": [
+        "Interface Homem-Máquina"
+      ],
+      "prerequisites": [],
+      "track": null,
+      "code": null
+    },
+    {
+      "id": "core-20",
+      "name": "Segurança e Auditoria de Sistemas",
+      "category": "tecnologica",
+      "hours": 60,
+      "period": 5,
+      "kind": "required",
+      "equivalents": [],
+      "prerequisites": [],
+      "track": null,
+      "code": null
+    },
+    {
+      "id": "core-21",
+      "name": "Engenharia para Sistemas de Informação II",
+      "category": "tecnologica",
+      "hours": 60,
+      "period": 5,
+      "kind": "required",
+      "equivalents": [
+        "Processo de Desenvolvimento de Software"
+      ],
+      "prerequisites": [
+        "core-13"
+      ],
+      "track": null,
+      "code": null
+    },
+    {
+      "id": "core-22",
+      "name": "Empreendedorismo e Inovação",
+      "category": "complementar",
+      "hours": 60,
+      "period": 5,
+      "kind": "required",
+      "equivalents": [
+        "Empreendedorismo e Legislação"
+      ],
+      "prerequisites": [],
+      "track": null,
+      "code": null
+    },
+    {
+      "id": "core-23",
+      "name": "Projeto de Desenvolvimento Tecnológico para o Mundo II",
+      "category": "suplementar",
+      "hours": 60,
+      "period": 6,
+      "kind": "required",
+      "equivalents": [
+        "Linguagens de Programação"
+      ],
+      "prerequisites": [],
+      "track": null,
+      "code": null
+    },
+    {
+      "id": "core-24",
+      "name": "Cálculo N1",
+      "category": "basica",
+      "hours": 60,
+      "period": 6,
+      "kind": "required",
+      "equivalents": [
+        "Cálculo a uma Variável"
+      ],
+      "prerequisites": [
+        "core-07"
+      ],
+      "track": null,
+      "code": null
+    },
+    {
+      "id": "core-25",
+      "name": "Engenharia para Sistemas de Informação III",
+      "category": "tecnologica",
+      "hours": 60,
+      "period": 6,
+      "kind": "required",
+      "equivalents": [
+        "Gerência de Projeto de Software"
+      ],
+      "prerequisites": [
+        "core-21"
+      ],
+      "track": null,
+      "code": null
+    },
+    {
+      "id": "core-26",
+      "name": "Modelagem de Dados",
+      "category": "tecnologica",
+      "hours": 60,
+      "period": 6,
+      "kind": "required",
+      "equivalents": [
+        "Projeto de Banco de Dados"
+      ],
+      "prerequisites": [
+        "core-14"
+      ],
+      "track": null,
+      "code": null
+    },
+    {
+      "id": "core-27",
+      "name": "Princípios da Teoria da Computação",
+      "category": "basica",
+      "hours": 60,
+      "period": 7,
+      "kind": "required",
+      "equivalents": [
+        "Introdução à Teoria da Computação"
+      ],
+      "prerequisites": [
+        "core-07"
+      ],
+      "track": null,
+      "code": null
+    },
+    {
+      "id": "core-28",
+      "name": "Estatística Aplicada à Análise de Dados",
+      "category": "basica",
+      "hours": 60,
+      "period": 7,
+      "kind": "required",
+      "equivalents": [
+        "Estatística Exploratória"
+      ],
+      "prerequisites": [],
+      "track": null,
+      "code": null
+    },
+    {
+      "id": "core-29",
+      "name": "Gestão do Conhecimento",
+      "category": "complementar",
+      "hours": 60,
+      "period": 8,
+      "kind": "required",
+      "equivalents": [
+        "Sistemas de Apoio à Decisão"
+      ],
+      "prerequisites": [],
+      "track": null,
+      "code": null
+    },
+    {
+      "id": "core-30",
+      "name": "Fundamentos de Estratégia Competitiva",
+      "category": "complementar",
+      "hours": 60,
+      "period": 8,
+      "kind": "required",
+      "equivalents": [],
+      "prerequisites": [],
+      "track": null,
+      "code": null
+    },
+    {
+      "id": "core-31",
+      "name": "Trabalho de Conclusão de Curso — Sistemas de Informação",
+      "category": "suplementar",
+      "hours": 420,
+      "period": 9,
+      "kind": "required",
+      "equivalents": [],
+      "prerequisites": [],
+      "track": null,
+      "code": null
+    },
+    {
+      "id": "core-32",
+      "name": "Educação Física A",
+      "category": "suplementar",
+      "hours": 30,
+      "period": 9,
+      "kind": "required",
+      "equivalents": [],
+      "prerequisites": [],
+      "track": null,
+      "code": null
+    },
+    {
+      "id": "tecnologia-1",
+      "name": "Projeto para Sociedade I",
+      "category": "suplementar",
+      "hours": 60,
+      "period": 7,
+      "kind": "required",
+      "track": "tecnologia",
+      "choice_group": "project-7",
+      "equivalents": [],
+      "prerequisites": [],
+      "code": null
+    },
+    {
+      "id": "tecnologia-2",
+      "name": "Projeto para Sociedade II",
+      "category": "suplementar",
+      "hours": 60,
+      "period": 8,
+      "kind": "required",
+      "track": "tecnologia",
+      "choice_group": "project-8",
+      "equivalents": [],
+      "prerequisites": [],
+      "code": null
+    },
+    {
+      "id": "ciencia-1",
+      "name": "Projeto de Soluções Complexas I",
+      "category": "suplementar",
+      "hours": 60,
+      "period": 7,
+      "kind": "required",
+      "track": "ciencia",
+      "choice_group": "project-7",
+      "equivalents": [],
+      "prerequisites": [],
+      "code": null
+    },
+    {
+      "id": "ciencia-2",
+      "name": "Projeto de Soluções Complexas II",
+      "category": "suplementar",
+      "hours": 60,
+      "period": 8,
+      "kind": "required",
+      "track": "ciencia",
+      "choice_group": "project-8",
+      "equivalents": [],
+      "prerequisites": [],
+      "code": null
+    },
+    {
+      "id": "opt-4106",
+      "code": "4106",
+      "name": "Introdução À Economia",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-4163",
+      "code": "4163",
+      "name": "Administração Financeira",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-4202",
+      "code": "4202",
+      "name": "Análise Organizacional De Processos",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-4341",
+      "code": "4341",
+      "name": "Língua Brasileira De Sinais - Libras",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-5145",
+      "code": "5145",
+      "name": "Educação Das Relações Étnico-Raciais",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-5345",
+      "code": "5345",
+      "name": "Psicologia Aplicada Às Organizações",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-6115",
+      "code": "6115",
+      "name": "Introdução Às Equações Diferenciais",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-6202",
+      "code": "6202",
+      "name": "Programação Paralela E Distribuída",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-6220",
+      "code": "6220",
+      "name": "Informática Na Educação",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-6255",
+      "code": "6255",
+      "name": "Introdução À Inteligência Artificial",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-6271",
+      "code": "6271",
+      "name": "Introdução À Computação Quântica",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-6277",
+      "code": "6277",
+      "name": "Tópicos Em Otimização",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-6278",
+      "code": "6278",
+      "name": "Elementos De Epidemiologia Computacional",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-6280",
+      "code": "6280",
+      "name": "Modelagem Matemático-Computacional Aplicada À Epidemiologia",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-6309",
+      "code": "6309",
+      "name": "Física Para Computação",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-6417",
+      "code": "6417",
+      "name": "Equações Diferenciais Parciais",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-6426",
+      "code": "6426",
+      "name": "Equações Diferenciais Ordinárias",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-6439",
+      "code": "6439",
+      "name": "Cálculo A Várias Variáveis",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14002",
+      "code": "14002",
+      "name": "Projeto De Sistemas Educacionais",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14011",
+      "code": "14011",
+      "name": "Tópicos Avançados Em Redes De Computadores I",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14013",
+      "code": "14013",
+      "name": "Teoria Da Computabilidade",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14014",
+      "code": "14014",
+      "name": "Modelos Não Convencionais De Computação",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14015",
+      "code": "14015",
+      "name": "Semântica De Linguagens De Programação",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14016",
+      "code": "14016",
+      "name": "Teoria Dos Grafos E Matróide",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14018",
+      "code": "14018",
+      "name": "Sistemas Inteligentes",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14019",
+      "code": "14019",
+      "name": "Reconhecimento De Padrões",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14020",
+      "code": "14020",
+      "name": "Redes Neurais",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14021",
+      "code": "14021",
+      "name": "Modelagem Em Inteligência Artificial",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14022",
+      "code": "14022",
+      "name": "Sistemas Especialistas",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14023",
+      "code": "14023",
+      "name": "Inteligência Artificial Aplicada",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14024",
+      "code": "14024",
+      "name": "Tópicos Avançados Em Inteligência Artificial",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14027",
+      "code": "14027",
+      "name": "Modelos Em Redes",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14028",
+      "code": "14028",
+      "name": "Fundamentos De Autômatos Celulares",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14029",
+      "code": "14029",
+      "name": "Laboratório De Modelagem",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14030",
+      "code": "14030",
+      "name": "Fundamentos De Bioinformática",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14031",
+      "code": "14031",
+      "name": "Bioinformática Aplicada",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14032",
+      "code": "14032",
+      "name": "Programação Linear",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14033",
+      "code": "14033",
+      "name": "Algoritmos Numéricos",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14034",
+      "code": "14034",
+      "name": "Análise E Projeto De Algoritmos De Simulação",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14035",
+      "code": "14035",
+      "name": "Modelagem Computacional",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14036",
+      "code": "14036",
+      "name": "Tópicos Em Modelagem Computacional",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14037",
+      "code": "14037",
+      "name": "Tópicos Em Ambientes Computacionais De Alto Desempenho",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14038",
+      "code": "14038",
+      "name": "Fundamentação Matemática Para Teoria Da Computabilidade",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14039",
+      "code": "14039",
+      "name": "Heurísticas Para Solução De Algoritmos Np-Completos",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14040",
+      "code": "14040",
+      "name": "Fundamentos De Computação Quântica",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14041",
+      "code": "14041",
+      "name": "Tópicos Especiais Em Fundamentos Computacionais",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14042",
+      "code": "14042",
+      "name": "Jogos Digitais",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14051",
+      "code": "14051",
+      "name": "Processamento De Imagens",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14060",
+      "code": "14060",
+      "name": "Tópicos Avançados Em Sistemas Distribuídos I",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14081",
+      "code": "14081",
+      "name": "Tópicos Avançados Em Engenharia De Software",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14099",
+      "code": "14099",
+      "name": "Análise De Desempenho",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14103",
+      "code": "14103",
+      "name": "Biologia Computacional",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14119",
+      "code": "14119",
+      "name": "Desenvolvimento De Aplicações Móveis",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14121",
+      "code": "14121",
+      "name": "Redes De Computadores Sem Fio",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14124",
+      "code": "14124",
+      "name": "Computação Em Nuvem",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14125",
+      "code": "14125",
+      "name": "Desenvolvimento De Aplicações Para Web",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14300",
+      "code": "14300",
+      "name": "Engenharia De Software Orientada A Modelos",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14301",
+      "code": "14301",
+      "name": "Modelos De Qualidade",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14302",
+      "code": "14302",
+      "name": "Análise E Projetos De Sistemas",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14303",
+      "code": "14303",
+      "name": "Fábricas De Software",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14304",
+      "code": "14304",
+      "name": "Arquitetura De Software",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14305",
+      "code": "14305",
+      "name": "Projeto De Sistemas Web",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14306",
+      "code": "14306",
+      "name": "Desenvolvimento Distribuído De Software",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14307",
+      "code": "14307",
+      "name": "Programação De Sistemas Interativos",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14312",
+      "code": "14312",
+      "name": "Web Services",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14319",
+      "code": "14319",
+      "name": "Metodologias Ágeis De Desenvolvimento De Software",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14320",
+      "code": "14320",
+      "name": "Inovação Em Projetos De Software",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14321",
+      "code": "14321",
+      "name": "Teste De Software",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14325",
+      "code": "14325",
+      "name": "Sistemas Colaborativos",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14326",
+      "code": "14326",
+      "name": "Data Warehousing E Business Intelligence",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14327",
+      "code": "14327",
+      "name": "Desenvolvimento Ágil De Software",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14328",
+      "code": "14328",
+      "name": "Inovação Em Tic",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14329",
+      "code": "14329",
+      "name": "Projeto De Sistemas De Informação",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14703",
+      "code": "14703",
+      "name": "Tendências Tecnológicas Em Tic",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14705",
+      "code": "14705",
+      "name": "Fundamentos De Criptografia",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14730",
+      "code": "14730",
+      "name": "Computação Para Análise De Dados",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    },
+    {
+      "id": "opt-14738",
+      "code": "14738",
+      "name": "Internet Das Coisas",
+      "category": "optativa",
+      "hours": 60,
+      "period": null,
+      "kind": "elective",
+      "track": null,
+      "equivalents": [],
+      "prerequisites": []
+    }
+  ],
+  "activity_rules": [
+    {
+      "id": "activity-3",
+      "group": "Ensino",
+      "name": "Iniciação a Docência",
+      "description": "Monitoria, PET, PIBID, BIA e outros programas de formação docente",
+      "maximum": 120,
+      "cap_group": "activity-3",
+      "mode": "semester",
+      "rate": 60,
+      "unit": "semestres",
+      "scoring": "60 h/semestre",
+      "evidence": "Declaração de monitoria emitida pela Instituição.",
+      "source_row": 3
+    },
+    {
+      "id": "activity-4",
+      "group": "Ensino",
+      "name": "Discussões Temáticas",
+      "description": "Como palestrante ou mediador",
+      "maximum": 30,
+      "cap_group": "activity-4",
+      "mode": "hours",
+      "rate": 3,
+      "unit": "horas realizadas",
+      "scoring": "1h equivale a 3h ",
+      "evidence": "Cópia do certificado ou declaração de\nparticipação.",
+      "source_row": 4
+    },
+    {
+      "id": "activity-5",
+      "group": "Ensino",
+      "name": "Tópicos Especiais",
+      "description": "Cursos ministrados",
+      "maximum": 45,
+      "cap_group": "special-topics",
+      "mode": "hours",
+      "rate": 3,
+      "unit": "horas realizadas",
+      "scoring": "1h ministrada equivale a 3h",
+      "evidence": "Certificado ou declaração de participação\nindicando carga horária.",
+      "source_row": 5
+    },
+    {
+      "id": "activity-6",
+      "group": "Ensino",
+      "name": "Prática Integrada",
+      "description": "Prática Integrada",
+      "maximum": 45,
+      "cap_group": "special-topics",
+      "mode": "artifact",
+      "rate": 15,
+      "unit": "artefatos",
+      "scoring": "15h por artefato",
+      "evidence": "Declaração de aprovação do artefato emitido pela coordenação do curso",
+      "source_row": 6
+    },
+    {
+      "id": "activity-9",
+      "group": "Pesquisa",
+      "name": "Iniciação à Pesquisa",
+      "description": "PIBIC,PIC, PIBITI e outros",
+      "maximum": 120,
+      "cap_group": "activity-9",
+      "mode": "semester",
+      "rate": 60,
+      "unit": "semestres",
+      "scoring": "60 h/semestre",
+      "evidence": "Declaração emitida pela instituição",
+      "source_row": 9
+    },
+    {
+      "id": "activity-10",
+      "group": "Pesquisa",
+      "name": "Publicação Técnico Científica",
+      "description": "Publicação Técnico Científica",
+      "maximum": 90,
+      "cap_group": "activity-10",
+      "mode": "publication",
+      "rate": 0,
+      "unit": "publicações",
+      "scoring": "Por publicação:\n• Qualis A: 120 h/a;\n• Qualis B: 90 h/a;\n• Qualis C: 60 h/a;\n• Qualis D: 30 h/a;\n• Em periódicos/eventos não indexados:\n15 h/a; e\n• Capítulo de livro publicado na área: 60 h/a.",
+      "evidence": "1) Cópia da publicação (artigo/capítulo).\n2) Cópias dos anais/revista, certificado de\npublicação/apresentação do trabalho ou email\nde aceite da publicação.",
+      "source_row": 10
+    },
+    {
+      "id": "activity-11",
+      "group": "Pesquisa",
+      "name": "Participação em Projeto de Pesquisa",
+      "description": "Participação em Projeto de Pesquisa",
+      "maximum": 120,
+      "cap_group": "activity-11",
+      "mode": "hours",
+      "rate": 1,
+      "unit": "horas",
+      "scoring": "por carga horária",
+      "evidence": "Declaração do coordenador do projeto indicando carga horária, relatório de atividades desempenhadas pelo estudante, comprovante de aprovação do projeto",
+      "source_row": 11
+    },
+    {
+      "id": "activity-12",
+      "group": "Pesquisa",
+      "name": "Vivência Profissional Complementar",
+      "description": "Estágio não obrigatório",
+      "maximum": 120,
+      "cap_group": "activity-12",
+      "mode": "semester",
+      "rate": 60,
+      "unit": "semestres",
+      "scoring": "60h/semestre",
+      "evidence": "1) Declaração/Contrato de estágio/emprego com a\nespecificação das atividades desenvolvidas,\nacompanhado da indicação de carga horária,\nlocal de trabalho, chefia responsável pelo\nestágio/emprego e dados para contato.",
+      "source_row": 12
+    },
+    {
+      "id": "activity-15",
+      "group": "Extensão",
+      "name": "Projeto de Extensão",
+      "description": "",
+      "maximum": 120,
+      "cap_group": "activity-15",
+      "mode": "semester",
+      "rate": 60,
+      "unit": "semestres",
+      "scoring": "60h/semestre",
+      "evidence": "1) Declaração de participação no projeto indicando\ncarga horária.\n2) Apresentação de relatório de atividades assinado\npelo Professor Tutor.",
+      "source_row": 15
+    },
+    {
+      "id": "activity-16",
+      "group": "Extensão",
+      "name": "Curso de Extensão",
+      "description": "",
+      "maximum": 90,
+      "cap_group": "activity-16",
+      "mode": "hours",
+      "rate": 1,
+      "unit": "horas",
+      "scoring": "1h assistida eq. a 1h",
+      "evidence": "1) Certificado ou declaração de participação\nindicando carga horária.",
+      "source_row": 16
+    },
+    {
+      "id": "activity-17",
+      "group": "Extensão",
+      "name": "Evento de Extensão",
+      "description": "Mostras, encontros, seminários, conferências, simpósios, oficinas, jornadas, etc",
+      "maximum": 90,
+      "cap_group": "activity-17",
+      "mode": "event",
+      "rate": 0,
+      "unit": "eventos",
+      "scoring": "Por evento:\n• 15h local/regional;\n• 30h nacional;  45h internacional;  membro da comissão organizadora: 20 hs extra",
+      "evidence": "1) Cópia do certificado ou declaração de\nparticipação.\nOBS: Deve constar a função desempenhada\n(conferencista, ouvinte, monitor, organizador,\nministrante, etc.).",
+      "source_row": 17
+    },
+    {
+      "id": "activity-18",
+      "group": "Extensão",
+      "name": "Produto de Extensão",
+      "description": "patentes, relatório técnico, sistemas de informação",
+      "maximum": 90,
+      "cap_group": "activity-18",
+      "mode": "artifact",
+      "rate": 15,
+      "unit": "artefatos",
+      "scoring": "15hs por artefato.",
+      "evidence": "Declaração de aprovação do artefato emitido\npela Coordenação do Curso",
+      "source_row": 18
+    },
+    {
+      "id": "activity-19",
+      "group": "Extensão",
+      "name": "Prestação de Serviço",
+      "description": "consultoria, atividade assistencial, campanhas, etc",
+      "maximum": 90,
+      "cap_group": "activity-19",
+      "mode": "artifact",
+      "rate": 15,
+      "unit": "artefatos",
+      "scoring": "15hs por artefato",
+      "evidence": "Declaração de aprovação do artefato emitida pela coordenação",
+      "source_row": 19
+    }
+  ],
+  "sources": [
+    {
+      "name": "matriz-curricular-com-equivalencias.pdf",
+      "url": "sources/matriz-curricular-com-equivalencias.pdf"
+    },
+    {
+      "name": "Optativas disponíveis para o BSI - Página1.pdf",
+      "url": "sources/Optativas disponíveis para o BSI - Página1.pdf"
+    },
+    {
+      "name": "Tabela.AtividadesComplementares.xlsx",
+      "url": "sources/Tabela.AtividadesComplementares.xlsx"
+    }
+  ],
+  "notes": [
+    "Matriz transcrita visualmente do PDF fornecido. Os identificadores das obrigatórias são internos; códigos SIGAA não constam na matriz.",
+    "Pré-requisitos são referências às setas da matriz, não uma validação oficial de matrícula. Equivalências devem ser confirmadas pela coordenação.",
+    "No 7º e no 8º período, os dois projetos são alternativas: somente uma opção por período pode ser planejada, cursada ou concluída. Cada escolha corresponde a 60h.",
+    "Educação Física A consta com 30h e foi incluída na carga obrigatória. Sem esse componente, a soma da figura não alcança 3.090h.",
+    "Tópicos Especiais e Prática Integrada compartilham o limite de 45h da célula mesclada B5:B6 da planilha.",
+    "As horas complementares são estimativas para planejamento e dependem de homologação. A aba componentes contém códigos repetidos e sobrepostos ao catálogo de optativas, portanto não foi usada como identificador."
+  ]
+}

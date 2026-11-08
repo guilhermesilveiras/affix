@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8fa">
+  <meta name="description" content="Ferramenta para acompanhar o progresso de alunos de BSI - UFRPE">
+  <title>Affix — Progresso acadêmico BSI - UFRPE</title>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./groups.css">
+  <script src="./theme.js"></script>
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Pular para o conteúdo</a>
+  <aside class="sidebar" aria-label="Navegação principal">
+    <a href="#overview" class="brand" aria-label="Affix, início"><span class="brand-mark">a<span>↗</span></span>affix<span class="brand-dot">.</span></a>
+    <div class="course-label">ACOMPANHAMENTO ACADÊMICO</div>
+    <nav id="navigation">
+      <a href="#overview" data-view="overview"><span data-icon="dashboard"></span>Visão geral</a>
+      <a href="#curriculum" data-view="curriculum"><span data-icon="grid"></span>Matriz curricular</a>
+      <a href="#electives" data-view="electives"><span data-icon="layers"></span>Disciplinas optativas<span class="nav-count">77</span></a>
+      <a href="#activities" data-view="activities"><span data-icon="clock"></span>Horas complementares</a>
+      <a href="#settings" data-view="settings" class="mobile-settings"><span data-icon="settings"></span>Meus dados e backup</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a href="#settings" class="settings-link" data-view="settings"><span data-icon="settings"></span>Meus dados e backup</a>
+      <button id="theme-toggle" class="theme-toggle"><span data-icon="moon"></span><span id="theme-label">Modo escuro</span><span class="switch" aria-hidden="true"></span></button>
+    </div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar"><div class="topbar-right"><span class="save-indicator" id="save-indicator"><span></span>Salvo neste navegador</span><button class="icon-button mobile-theme" id="mobile-theme" data-action="theme" aria-label="Alternar tema"></button></div></header>
+    <main id="main" tabindex="-1"><div class="loading">Carregando disciplinas…</div></main>
+  </div>
+  <dialog id="modal" aria-labelledby="modal-title"><div id="modal-content"></div></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <input id="import-file" type="file" accept="application/json,.json" hidden>
+</body>
+</html>
